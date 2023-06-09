@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+<!--
+{% for i in list_users %}
+   <h2>{{i[0]}}</h2>
+   <h2>{{i[1]}}</h2>
+   <h2>{{i[2]}}</h2>
+   <h2>{{i[3]}}</h2>
+{% endfor %}
+-->
+{% block title %}
+  read data
+{% endblock %}
+
+
+{% block content %}
+	<div class="row">
+	        <div class="card w-50 mx-auto p-3">
+	                <div class="card-header bg-light text-center">
+	                    <h3>Wellcome</h3>
+	                </div>
+	                <br>
+	                <div>
+	                	{% with messages = get_flashed_messages()  %}
+		                {% if messages %}
+		                {% for message in messages %}
+		                <div class="alert alert-success alert-dismissible fade show" role="alert">
+		                     {{ message }}
+		                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		                       <span aria-hidden="true">×</span>
+		                    </button>
+		                </div>
+		                {% endfor %}
+		                {% endif %}
+		                {% endwith %}
+	                </div>
+	                <div class="card-body">
+	                    <table class="table table-dark table-hover table-responsive-md text-center">
+	                        <thead>
+	                            <tr>
+	                            	<th>ID</th>
+	                                <th>Name</th>
+	                                <th>Age</th>
+	                                <th>Email Address</th>
+	                                <th>Salary </th>
+	                                <th>Update</th>
+	                                <th>Delete</th>  
+	                            </tr>
+	                        </thead>
+	                        <tbody>                          
+	                            {% for i in list_users %}
+	                                 <tr>
+	                                     <td>{{i[0]}}</td>
+	                                     <td>{{i[1]}}</td>
+	                                     <td>{{i[2]}}</td>
+	                                     <td>{{i[3]}}</td>
+	                                     <td>{{i[4]}}</td>
+	                                     <td>
+	                                     	<button class="btn btn-warning btn-sm"> <a href="/get/{{i[1]}}">Edit</a></button>
+	                                     </td>
+	                                     <td><button class="btn btn-danger btn-sm" ><a href="/delete/{{i[1]}}"> Delete</a></button>
+	                                     </td>
+	                                     
+	                                 </tr>                                       
+	                            {% endfor %}
+	                                
+	                        </tbody>
+	                    </table>
+	                </div>
+	          <!--<a href="/insert">Insert New</a>-->
+            <!--- Start of Insert Button Code     -->
+
+            <!-- Button trigger modal -->
+			<center><button type="button" class="btn btn-success btn-sm " data-toggle="modal" data-target="#exampleModal">
+			  Insert New Data
+			</button></center>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header ">
+			        <!--<h5 class="modal-title text-center" id="exampleModalLabel">Insert Data</h5>-->
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+				      	<form action="/insert"  method="POST" class="card w-100 mx-auto p-3" >
+					    	  <div class="mb-3 p-3 mb-2 bg-primary text-white">
+							    <center><h4 class="form-label text-center">Insert Data</h4></center>
+							  </div>
+							  <div class="mb-1">
+							    <label for="exampleInputtext" class="form-label">Name</label>
+							    <input type="text" class="form-control form-control-sm p-0"  id="exampleInputtext" name="Name">
+							  </div>
+
+							  <div class="mb-1">
+							    <label for="exampleInputage" class="form-label">Age</label>
+							    <input type="number" class="form-control form-control-sm p-0" id="exampleInputage" name="Age" >
+							  </div>
+
+							  <div class="mb-1">
+							    <label for="exampleInputEmail1" class="form-label">Email address</label>
+							    <input type="email" class="form-control form-control-sm p-0" id="exampleInputEmail1" aria-describedby="emailHelp" name="Email">
+							  </div>
+
+							  <div class="mb-1">
+							    <label for="exampleInputsalary" class="form-label">Salary</label>
+							    <input type="number" class="form-control form-control-sm p-0" id="exampleInputsalary" name="salary">
+							  </div>
+
+							  <button type="submit" class="btn btn-primary">Submit</button>
+				        </form>     
+			      </div>
+			      <!--<div class="modal-footer p-0">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			      </div>-->
+			    </div>
+			  </div>
+			</div>
+
+            <!-- End of Insert Button Code  ------->
+
+	        </div>        
+	</div> 
+
+{% endblock  %} 
+
+
+
+{% block modal %}
+
+{% endblock %}
+
+
+ 

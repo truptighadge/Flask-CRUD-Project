@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update Data
+{% endblock %}
+
+{% block content %}
+	{% for i in  list_users %}
+	    <form action="/update/{{i[0]}}"  method="POST" class="card w-50 mx-auto p-3" >
+	    	  <div class="mb-3 p-3 mb-2 bg-primary text-white">
+			    <center><h4 class="form-label">Update Data</h4></center>
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputtext" class="form-label">Name</label>
+			    <input type="text" value="{{i[1]}}" class="form-control form-control-sm"   id="exampleInputtext" name="Name">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputage" class="form-label">Age</label>
+			    <input type="number"  value="{{i[2]}}" class="form-control form-control-sm" id="exampleInputage" name="Age" >
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputEmail1" class="form-label">Email address</label>
+			    <input type="email"  value="{{i[3]}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Email">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputsalary" class="form-label">Salary</label>
+			    <input type="number" value="{{i[4]}}" class="form-control" id="exampleInputsalary" name="salary">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Update</button>
+	    </form>
+
+    {% endfor %}
+{% endblock %}
+
+
+
+
+{% block modal %}
+
+{% endblock %}
+
+
+
